@@ -8,4 +8,3 @@ CREATE TABLE `Location`
 ) ENGINE = INNODB
   auto_increment = 21
   DEFAULT CHARSET = utf8
-    
