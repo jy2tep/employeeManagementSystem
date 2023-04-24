@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;
 
@@ -35,6 +36,7 @@ public class UserService {
     JwtUtils jwtUtils;
 
     //注册会员
+    @Transactional
     public Map userCreate(UserForm userForm){
         User mallUser = new User();
         Map map = new HashMap();
@@ -48,9 +50,11 @@ public class UserService {
         userMapper.insertUser(mallUser);
         String xAuthtoken = jwtUtils.createJwt(mallUser);
         map.put("xAuthtoken",xAuthtoken);
+        map.put("userName",mallUser.getUserName());
         return map;
     }
     //会员登录
+    @Transactional
     public Map userSignin(UserForm userForm){
         User mallUser = new User();
         mallUser.setUserName(userForm.getUserName());
@@ -66,7 +70,7 @@ public class UserService {
         String xAuthtoken = jwtUtils.createJwt(userTemp);
         Map map = new HashMap();
         map.put("xAuthtoken",xAuthtoken);
-        map.put("account",userTemp);
+        map.put("userName",userTemp.getUserName());
         return map;
     }
 

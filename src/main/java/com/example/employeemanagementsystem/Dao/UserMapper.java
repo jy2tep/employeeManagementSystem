@@ -2,12 +2,13 @@ package com.example.employeemanagementsystem.Dao;
 
 import com.example.employeemanagementsystem.Model.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserMapper {
-    int insertUser(User user);
+    int insertUser(@Param("user")User user);
 
-    int selectCount(User user);
+    int selectCount(@Param("user")User user);
 
-    User selectUser(String userName);
+    User selectUser(@Param("userName")String userName);
 }

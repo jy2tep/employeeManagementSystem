@@ -3,12 +3,12 @@
 <mapper namespace="com.example.employeemanagementsystem.Dao.UserMapper">
 
     <insert id="insertUser" parameterType="com.example.employeemanagementsystem.Model.User">
-        insert into user(userName,password) values (#{userName},#{password})
+        insert into User(userName,password) values (#{user.userName},#{user.password})
     </insert>
     <select id="selectCount" resultType="java.lang.Integer"
             parameterType="com.example.employeemanagementsystem.Model.User">
 
-    select  count(1) from User where userName  = #{userName}
+    select  count(1) from User where userName=#{user.userName}
 
     </select>
     <select id="selectUser" resultType="com.example.employeemanagementsystem.Model.User"

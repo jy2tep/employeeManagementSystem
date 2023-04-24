@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.employeemanagementsystem.Dao.EmployeeMapper">
+
+    <insert id="insertEmployee" parameterType="com.example.employeemanagementsystem.Model.Employee">
+        insert into Employee(employeeId,employeeName,gender,age,baseSalary,locationId) values (#{employee.employeeId},#{employee.employeeName},#{employee.gender},#{employee.age},#{employee.baseSalary},#{employee.locationId})
+    </insert>
+
+
+    <select id="selectEmployee" resultType="com.example.employeemanagementsystem.Model.Employee"
+            parameterType="com.example.employeemanagementsystem.Model.Employee">
+
+        select  * from User where employeeName=#{employee.employeeName}
+
+    </select>
+
+
+</mapper>
