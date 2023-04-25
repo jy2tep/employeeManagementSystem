@@ -5,14 +5,31 @@
     <insert id="insertEmployee" parameterType="com.example.employeemanagementsystem.Model.Employee">
         insert into Employee(employeeId,employeeName,gender,age,baseSalary,locationId) values (#{employee.employeeId},#{employee.employeeName},#{employee.gender},#{employee.age},#{employee.baseSalary},#{employee.locationId})
     </insert>
+    <update id="UpdateEmployee" parameterType="com.example.employeemanagementsystem.Model.Employee">
+
+        update Employee  set employeeName=#{employee.employeeName},gender=#{employee.gender},age=#{employee.age},baseSalary=#{employee.baseSalary},locationId=#{employee.locationId} where employeeId=#{employee.employeeId}
+    </update>
 
 
-    <select id="selectEmployee" resultType="com.example.employeemanagementsystem.Model.Employee"
-            parameterType="com.example.employeemanagementsystem.Model.Employee">
+    <select id="selectEmployee" resultType="com.example.employeemanagementsystem.Model.Employee">
 
-        select  * from User where employeeName=#{employee.employeeName}
+        select  * from Employee
 
     </select>
+
+    <select id="selectEmployeeByOne" resultType="com.example.employeemanagementsystem.Model.Employee"
+            parameterType="com.example.employeemanagementsystem.Model.Employee">
+
+        select  * from Employee where employeeId=#{employee.employeeId}
+
+    </select>
+
+    <delete id="deleteEmployee"
+            parameterType="com.example.employeemanagementsystem.Model.Employee" >
+
+        delete from Employee where employeeId=#{employee.employeeId}
+
+    </delete>
 
 
 </mapper>
