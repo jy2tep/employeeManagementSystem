@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.employeemanagementsystem.Dao.LocationMapper">
+
+    <insert id="insertLocation" parameterType="com.example.employeemanagementsystem.Model.Location" useGeneratedKeys="true" keyProperty="id">
+        insert into Location(locationName,latitude,longitude) values (#{location.locationName,},#{location.latitude},#{location.longitude})
+    </insert>
+    <update id="UpdateLocation" parameterType="com.example.employeemanagementsystem.Model.Location">
+
+        update Location  set locationName=#{location.locationName},latitude=#{location.latitude},longitude=#{location.longitude} where locationId=#{location.locationId}
+    </update>
+
+
+    <select id="selectLocation" resultType="com.example.employeemanagementsystem.Model.Location" parameterType="com.example.employeemanagementsystem.Model.Location">
+
+        select  * from Location where locationId=#{location.locationId}
+
+    </select>
+
+
+    <delete id="deleteLocation"
+            parameterType="com.example.employeemanagementsystem.Model.Location" >
+
+        delete from Location where locationId=#{location.locationId}
+
+    </delete>
+
+
+</mapper>
